@@ -2,7 +2,7 @@
 
 RoboFleet Data Platform — a portfolio project that shows how a fleet of delivery robots could stream telemetry into a data platform on Google Cloud.  
 
-This repo is my way of pulling together skills in **GCP, Kubernetes, Terraform, Argo CD, GitOps, CI/CD, and observability** into something robotics-flavored (similar to what Serve Robotics actually works on).
+This repo is my way of pulling together skills in **GCP, Kubernetes, Terraform, Argo CD, GitOps, CI/CD, and observability** into something robotics-flavored
 
 ---
 
