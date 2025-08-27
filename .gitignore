@@ -1,22 +1,18 @@
-# macOS system files
-.DS_Store
-
-# Python
 __pycache__/
 *.pyc
+.venv/
+.env
 
-# Terraform
-*.tfstate
-*.tfstate.backup
-.terraform/
+**/.terraform/*
+**/.terraform.lock.hcl
+*.tfstate*
 crash.log
 
-# Node.js (if you add later)
-node_modules/
+charts/**/.DS_Store
 
-# IDE / Editor
+**/sbom-*.json
+dist/
+
 .vscode/
 .idea/
-
-# Logs
-*.log
+.DS_Store
