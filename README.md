@@ -36,7 +36,7 @@ I designed and implemented the **RoboFleet Data Platform**:
 - Canary rollout triggered an **automatic rollback** when error rate >0.5%.  
 - Produced Grafana dashboards with live ingest rates, Pub/Sub backlog, BigQuery latency.
 
-This mirrors the type of **real-world reliability and scalability challenges** faced by robotics companies like Serve Robotics.
+This mirrors the type of **real-world reliability and scalability challenges** 
 
 ---
 
