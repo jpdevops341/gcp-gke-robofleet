@@ -1,0 +1,14 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: control-api
+spec:
+  replicas: {{ .Values.replicas }}
+  selector: { matchLabels: { app: control-api } }
+  template:
+    metadata: { labels: { app: control-api } }
+    spec:
+      containers:
+      - name: control-api
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        ports: [{ containerPort: 8080 }]

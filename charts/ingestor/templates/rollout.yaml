@@ -1,0 +1,26 @@
+{{- if .Values.rollouts.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: ingestor
+spec:
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels: { app: ingestor }
+  template:
+    metadata: { labels: { app: ingestor } }
+    spec:
+      serviceAccountName: ingestor
+      containers:
+      - name: ingestor
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        ports: [{ containerPort: 8080 }]
+  strategy:
+    canary:
+      steps:
+      - setWeight: 20
+      - pause: { duration: 60 }
+      - setWeight: 60
+      - pause: { duration: 60 }
+      - setWeight: 100
+{{- end }}

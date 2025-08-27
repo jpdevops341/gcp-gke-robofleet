@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ingestor
+  labels: { app: ingestor }
+spec:
+  replicas: {{ .Values.replicas }}
+  selector: { matchLabels: { app: ingestor } }
+  template:
+    metadata:
+      labels: { app: ingestor }
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8080"
+    spec:
+      serviceAccountName: ingestor
+      containers:
+      - name: ingestor
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        ports: [{ containerPort: 8080 }]
+        env:
+        - name: GCP_PROJECT
+          value: "{{ .Values.env.GCP_PROJECT }}"
+        - name: BQ_DATASET
+          value: "{{ .Values.env.BQ_DATASET }}"
+        - name: BQ_TABLE
+          value: "{{ .Values.env.BQ_TABLE }}"
+        - name: PUBSUB_SUBSCRIPTION
+          value: "{{ .Values.env.PUBSUB_SUBSCRIPTION }}"
+        - name: GCS_BUCKET
+          value: "{{ .Values.env.GCS_BUCKET }}"
+        securityContext:
+          allowPrivilegeEscalation: false
+          runAsNonRoot: true
+          runAsUser: 65532

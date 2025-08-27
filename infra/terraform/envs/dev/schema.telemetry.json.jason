@@ -1,0 +1,9 @@
+[
+  {"name":"ts","type":"TIMESTAMP","mode":"REQUIRED"},
+  {"name":"robot_id","type":"STRING","mode":"REQUIRED"},
+  {"name":"event_type","type":"STRING","mode":"REQUIRED"},
+  {"name":"lat","type":"FLOAT","mode":"NULLABLE"},
+  {"name":"lng","type":"FLOAT","mode":"NULLABLE"},
+  {"name":"battery","type":"FLOAT","mode":"NULLABLE"},
+  {"name":"payload","type":"STRING","mode":"NULLABLE"}
+]

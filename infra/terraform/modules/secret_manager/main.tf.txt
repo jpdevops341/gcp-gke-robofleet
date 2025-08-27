@@ -1,0 +1,8 @@
+resource "google_secret_manager_secret" "app" {
+  secret_id  = var.secret_id
+  replication { automatic = true }
+}
+resource "google_secret_manager_secret_version" "app" {
+  secret      = google_secret_manager_secret.app.id
+  secret_data = var.secret_value
+}

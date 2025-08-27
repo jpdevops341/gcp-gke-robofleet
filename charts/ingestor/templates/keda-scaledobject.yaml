@@ -1,0 +1,16 @@
+{{- if .Values.keda.enabled }}
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: ingestor-pubsub
+spec:
+  scaleTargetRef:
+    name: ingestor
+  minReplicaCount: {{ .Values.keda.minReplicas }}
+  maxReplicaCount: {{ .Values.keda.maxReplicas }}
+  triggers:
+  - type: gcp-pubsub
+    metadata:
+      subscriptionName: "{{ .Values.keda.pubsubSubscription }}"
+      value: "100" # messages per replica
+{{- end }}
