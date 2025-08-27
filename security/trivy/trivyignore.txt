@@ -1,0 +1,2 @@
+# Example: ignore a noisy CVE ID here
+# CVE-2024-XXXX

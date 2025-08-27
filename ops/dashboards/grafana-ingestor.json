@@ -1,0 +1,9 @@
+{
+  "title": "Robofleet Ingestor",
+  "panels": [
+    { "type": "graph", "title": "HTTP Requests",
+      "targets": [{ "expr": "rate(http_requests_total{app='ingestor'}[1m])" }] },
+    { "type": "graph", "title": "Error Rate",
+      "targets": [{ "expr": "sum(rate(http_requests_total{status=~'5..',app='ingestor'}[5m])) / sum(rate(http_requests_total{app='ingestor'}[5m]))" }] }
+  ]
+}

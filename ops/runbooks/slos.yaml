@@ -1,0 +1,7 @@
+slos:
+  - name: ingest-latency
+    sli: p95(ingest_latency_ms)
+    objective: 5000
+  - name: error-rate
+    sli: rate(http_5xx_total)/rate(http_requests_total)
+    objective: 0.005
